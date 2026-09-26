@@ -1,0 +1,273 @@
+<html>
+<head>
+  <title>Student Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(145deg, #f3f4f6 0%, #e0e7ff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .header {
+      width: 100%;
+      background: linear-gradient(90deg, #1e3a8a 0%, #3b82f6 100%);
+      padding: 20px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      text-align: center;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .main-content {
+      max-width: 1400px;
+      margin: 40px auto;
+      padding: 40px 20px;
+      animation: slideIn 0.8s ease-out;
+    }
+
+    .main-content h2 {
+      font-size: 32px;
+      font-weight: 600;
+      color: #1e3a8a;
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .main-content h2::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      padding: 0 15px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+      border: 2px solid #3b82f6;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1.1);
+    }
+
+    .card h3 {
+      font-size: 26px;
+      font-weight: 600;
+      color: #1e3a8a;
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .card:hover h3 {
+      color: #3b82f6;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(45deg, #3b82f6, #10b981);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+    }
+
+    .btn:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn:hover {
+      background: linear-gradient(45deg, #1e40af, #059669);
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .main-content {
+        padding: 30px 15px;
+      }
+
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .main-content h2 {
+        font-size: 26px;
+        margin-bottom: 40px;
+      }
+
+      .card {
+        padding: 25px;
+      }
+
+      .card h3 {
+        font-size: 22px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .main-content h2 {
+        font-size: 22px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card h3 {
+        font-size: 20px;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Student Dashboard</h1>
+  </div>
+  <div class="main-content">
+    <h2>Manage Student Records</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Create</h3>
+        <p>Add a new student record to the system.</p>
+        <a href="registration.html" class="btn">Add Student</a>
+      </div>
+      <div class="card">
+        <h3>Read</h3>
+        <p>View a list of all student records.</p>
+        <a href="read" class="btn">View Records</a>
+      </div>
+      <div class="card">
+        <h3>Update</h3>
+        <p>Edit details of an existing student.</p>
+        <a href="update.html" class="btn">Edit Student</a>
+      </div>
+      <div class="card">
+        <h3>Delete</h3>
+        <p>Remove a student record permanently.</p>
+        <a href="delete.html" class="btn">Delete Student</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
