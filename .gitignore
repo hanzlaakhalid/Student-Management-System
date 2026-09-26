@@ -1,0 +1,26 @@
+# Compiled Java classes (build from the .java sources)
+*.class
+
+# Build output / packaged archives
+*.war
+*.ear
+target/
+build/
+out/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+nbproject/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
